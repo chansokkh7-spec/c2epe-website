@@ -773,11 +773,14 @@
             .healthcheck-wrap { grid-template-columns: 1fr !important; }
             .healthcheck-wrap > div:last-child { padding: 0.5rem 2rem 2rem !important; }
             .nav-container { flex-wrap: wrap; gap: 0.6rem; padding: 0.8rem 1rem; }
-            .nav-container > a.btn-gold { padding: 0.5rem 0.9rem; font-size: 0.82rem; margin-right: 0 !important; }
+            .logo { order: 1; }
+            .nav-cta-group { order: 2; margin: 0 auto; display: flex; align-items: center; gap: 0.6rem; }
+            .hamburger { order: 3; }
+            .nav-cta-group .btn-gold { padding: 0.5rem 0.9rem; font-size: 0.82rem; margin-right: 0 !important; }
         }
         @media (max-width: 420px) {
             .nav-container { justify-content: center; }
-            .nav-container > a.btn-gold { padding: 0.45rem 0.7rem; font-size: 0.72rem; }
+            .nav-cta-group .btn-gold { padding: 0.45rem 0.7rem; font-size: 0.72rem; }
             .btn-app-login { display: none; }
             .promo-badge { font-size: 0.72rem; padding: 0.25rem 0.6rem; }
             .promo-text { font-size: 0.84rem; }
@@ -940,8 +943,10 @@
                 <li><a href="#team">ក្រុមការងារ</a></li>
                 <li><a href="#contact">ទំនាក់ទំនង</a></li>
             </ul>
-            <a href="https://chansokkh7-spec.github.io/c2epe-portal/index.html" class="btn-gold btn-app-login" style="background:transparent;border:2px solid var(--gold-main);color:var(--gold-main);margin-right:0.6rem;">🔐 ចូល App</a>
-            <a href="https://chansokkh7-spec.github.io/c2epe-portal/index.html" class="btn-gold">📝 ចុះឈ្មោះឥឡូវនេះ</a>
+            <div class="nav-cta-group">
+                <a href="https://chansokkh7-spec.github.io/c2epe-portal/index.html" class="btn-gold btn-app-login" style="background:transparent;border:2px solid var(--gold-main);color:var(--gold-main);margin-right:0.6rem;">🔐 ចូល App</a>
+                <a href="https://chansokkh7-spec.github.io/c2epe-portal/index.html" class="btn-gold">📝 ចុះឈ្មោះឥឡូវនេះ</a>
+            </div>
         </div>
     </header>
 
