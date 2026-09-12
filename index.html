@@ -758,7 +758,13 @@
                 box-shadow: 0 12px 20px rgba(0,0,0,0.25);
             }
             .promo-container { text-align: center; justify-content: center; }
-            .achieve-wrap { grid-template-columns: 1fr; text-align: center; }
+            .promo-banner { padding: 0.9rem 1.2rem; }
+            .promo-text { font-size: 0.9rem; }
+            .promo-text strong { font-size: 1rem; display: block; margin-bottom: 0.2rem; }
+            .achieve-banner { padding: 2rem 1.2rem; }
+            .achieve-wrap { grid-template-columns: 1fr; text-align: center; gap: 1.4rem; }
+            .achieve-title h2 { font-size: 1.4rem; }
+            .achieve-title p { font-size: 0.88rem; }
             .quicklinks-wrap { flex-direction: column; align-items: center; }
             .app-wrap { grid-template-columns: 1fr; text-align: center; }
             .grammar-wrap { grid-template-columns: 1fr !important; text-align: center; }
@@ -772,6 +778,149 @@
         @media (max-width: 420px) {
             .nav-container { justify-content: center; }
             .nav-container > a.btn-gold { padding: 0.45rem 0.7rem; font-size: 0.72rem; }
+            .btn-app-login { display: none; }
+            .promo-badge { font-size: 0.72rem; padding: 0.25rem 0.6rem; }
+            .promo-text { font-size: 0.84rem; }
+        }
+        /* AI Chat Bot Widget */
+        #ai-chat-toggle {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold-main) 0%, var(--gold-light) 100%);
+            border: none;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            cursor: pointer;
+            font-size: 1.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 500;
+            animation: aiPulse 2.4s infinite;
+        }
+        @keyframes aiPulse {
+            0% { box-shadow: 0 6px 20px rgba(0,0,0,0.3), 0 0 0 0 rgba(217,119,6,0.5); }
+            70% { box-shadow: 0 6px 20px rgba(0,0,0,0.3), 0 0 0 14px rgba(217,119,6,0); }
+            100% { box-shadow: 0 6px 20px rgba(0,0,0,0.3), 0 0 0 0 rgba(217,119,6,0); }
+        }
+        #ai-chat-window {
+            position: fixed;
+            bottom: 94px;
+            right: 22px;
+            width: 340px;
+            max-width: calc(100vw - 40px);
+            height: 460px;
+            max-height: calc(100vh - 140px);
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 500;
+        }
+        #ai-chat-window.open { display: flex; }
+        .ai-chat-header {
+            background: var(--navy-dark);
+            color: #ffffff;
+            padding: 0.9rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--gold-main);
+        }
+        .ai-chat-header strong { font-size: 0.98rem; }
+        .ai-chat-header small { display:block; color:#94a3b8; font-size:0.72rem; font-weight:400; }
+        .ai-chat-close {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 1.3rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .ai-chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0.9rem;
+            background: var(--bg-light);
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .ai-msg {
+            max-width: 85%;
+            padding: 0.55rem 0.85rem;
+            border-radius: 14px;
+            font-size: 0.86rem;
+            line-height: 1.5;
+            white-space: pre-line;
+        }
+        .ai-msg.bot {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            color: var(--text-dark);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        .ai-msg.user {
+            background: var(--navy-main);
+            color: #ffffff;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+        .ai-chat-quick {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            padding: 0 0.9rem 0.6rem;
+            background: var(--bg-light);
+        }
+        .ai-quick-btn {
+            background: #ffffff;
+            border: 1px solid var(--gold-main);
+            color: var(--gold-main);
+            padding: 0.3rem 0.7rem;
+            border-radius: 14px;
+            font-size: 0.76rem;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .ai-quick-btn:hover { background: var(--gold-main); color: #ffffff; }
+        .ai-chat-input-row {
+            display: flex;
+            border-top: 1px solid #e2e8f0;
+            padding: 0.6rem;
+            gap: 0.5rem;
+            background: #ffffff;
+        }
+        .ai-chat-input-row input {
+            flex: 1;
+            border: 1px solid #cbd5e1;
+            border-radius: 20px;
+            padding: 0.5rem 0.9rem;
+            font-size: 0.85rem;
+            font-family: inherit;
+            outline: none;
+        }
+        .ai-chat-input-row input:focus { border-color: var(--gold-main); }
+        .ai-chat-send {
+            background: var(--gold-main);
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            font-size: 1rem;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        @media (max-width: 420px) {
+            #ai-chat-window { right: 12px; bottom: 84px; }
+            #ai-chat-toggle { right: 14px; bottom: 14px; }
         }
     </style>
 </head>
@@ -791,7 +940,7 @@
                 <li><a href="#team">ក្រុមការងារ</a></li>
                 <li><a href="#contact">ទំនាក់ទំនង</a></li>
             </ul>
-            <a href="https://chansokkh7-spec.github.io/c2epe-portal/index.html" class="btn-gold" style="background:transparent;border:2px solid var(--gold-main);color:var(--gold-main);margin-right:0.6rem;">🔐 ចូល App</a>
+            <a href="https://chansokkh7-spec.github.io/c2epe-portal/index.html" class="btn-gold btn-app-login" style="background:transparent;border:2px solid var(--gold-main);color:var(--gold-main);margin-right:0.6rem;">🔐 ចូល App</a>
             <a href="https://chansokkh7-spec.github.io/c2epe-portal/index.html" class="btn-gold">📝 ចុះឈ្មោះឥឡូវនេះ</a>
         </div>
     </header>
@@ -1452,6 +1601,96 @@
                 if (hamburgerBtn) hamburgerBtn.textContent = '☰';
             });
         });
+    </script>
+
+    <!-- AI Chat Bot Widget -->
+    <button id="ai-chat-toggle" type="button" aria-label="បើក AI Chat" onclick="toggleAiChat()">🤖</button>
+    <div id="ai-chat-window">
+        <div class="ai-chat-header">
+            <div>
+                <strong>🤖 SEG AI Assistant</strong>
+                <small>C2-EPE Digital Academy</small>
+            </div>
+            <button class="ai-chat-close" type="button" aria-label="បិទ" onclick="toggleAiChat()">✕</button>
+        </div>
+        <div class="ai-chat-messages" id="ai-chat-messages"></div>
+        <div class="ai-chat-quick">
+            <button class="ai-quick-btn" type="button" onclick="aiSend('ទំនាក់ទំនង')">ទំនាក់ទំនង</button>
+            <button class="ai-quick-btn" type="button" onclick="aiSend('កម្មវិធីសិក្សា')">កម្មវិធីសិក្សា</button>
+            <button class="ai-quick-btn" type="button" onclick="aiSend('ការចុះឈ្មោះ')">ការចុះឈ្មោះ</button>
+            <button class="ai-quick-btn" type="button" onclick="aiSend('តម្លៃ')">តម្លៃ</button>
+        </div>
+        <div class="ai-chat-input-row">
+            <input type="text" id="ai-chat-input" placeholder="វាយសំណួររបស់អ្នក..." onkeydown="if(event.key==='Enter'){aiSendFromInput();}">
+            <button class="ai-chat-send" type="button" aria-label="ផ្ញើ" onclick="aiSendFromInput()">➤</button>
+        </div>
+    </div>
+
+    <script>
+        var aiKnowledgeBase = [
+            { keywords: ['ទំនាក់ទំនង','ទូរស័ព្ទ','លេខទូរស័ព្ទ','អ៊ីមែល','contact','phone'],
+              response: 'អ្នកអាចទាក់ទងមកកាន់ C2-EPE Digital Academy បានតាមរយៈ:\n📞 ទូរស័ព្ទ: 015 555 631 / 088 4714 887 / 071 6115 407\n📧 អ៊ីមែល: admissions@c2epeschool.ng\n🌐 គេហទំព័រ: www.c2epeschool.ng' },
+            { keywords: ['ចុះឈ្មោះ','admission','ចូលរៀន','ការចុះឈ្មោះ'],
+              response: 'ការចុះឈ្មោះកំពុងបើកឆាប់ៗនេះ! 🎓\nសូមចុចប៊ូតុង "ចុះឈ្មោះឥឡូវនេះ" នៅផ្នែកខាងលើគេហទំព័រ ឬទាក់ទងមកយើងខ្ញុំដើម្បីទទួលព័ត៌មានលម្អិត។' },
+            { keywords: ['កម្មវិធីសិក្សា','course','វគ្គសិក្សា','courses','cefr'],
+              response: 'C2-EPE Digital Academy មានកម្មវិធីសិក្សាភាសាអង់គ្លេសសិក្សាផ្ទាល់ និង តាមឌីជីថល ដោយប្រើបច្ចេកវិទ្យា AI ឬ សិស្សអាចសិក្សាតាមអន់ឡាញក៏បាន។\nកម្មវិធីសិក្សាស្របតាមស្តង់ដារអន្តរជាតិ CEFR ចាប់ពីកម្រិត K0 ដល់ C2 រួមទាំងវគ្គ Advanced English & C2 Test Prep។' },
+            { keywords: ['តម្លៃ','ថ្លៃសិក្សា','discount','បញ្ចុះតម្លៃ','ថ្លៃ'],
+              response: 'បច្ចុប្បន្នមានការបញ្ចុះតម្លៃ 20% សម្រាប់សិស្ស 20នាក់ដំបូង ដែលចុះឈ្មោះវគ្គ Advanced English & C2 Test Prep!\nសូមទាក់ទងមកយើងខ្ញុំសម្រាប់ព័ត៌មានលម្អិតអំពីតម្លៃ។' },
+            { keywords: ['សុខភាព','health','bmi','checker'],
+              response: 'SEG Health Checker គឺជាប្រព័ន្ធ AI សម្រាប់តាមដានសុខភាពសិស្សានុសិស្សជាប្រចាំ រួមទាំងការគណនា BMI ដោយស្វ័យប្រវត្តិ និងផ្តល់អនុសាសន៍សុខភាព។' },
+            { keywords: ['app','ចូល app','application'],
+              response: 'អ្នកអាចចូលទៅកាន់ App សិក្សារបស់យើងខ្ញុំបានតាមរយៈប៊ូតុង "🔐 ចូល App" នៅផ្នែកខាងលើគេហទំព័រ។' },
+            { keywords: ['សួស្តី','hello','hi','ជំរាបសួរ'],
+              response: 'សួស្តី! 👋 រីករាយបានស្វាគមន៍! តើខ្ញុំអាចជួយអ្នកបានយ៉ាងណា?' }
+        ];
+        var aiFallback = 'សូមទោស ខ្ញុំមិនទាន់យល់សំណួររបស់អ្នកច្បាស់ទេ 🙏\nសូមទាក់ទងមកកាន់ក្រុមការងាររបស់យើងខ្ញុំដោយផ្ទាល់តាមរយៈទូរស័ព្ទ 015 555 631 ឬអ៊ីមែល admissions@c2epeschool.ng សម្រាប់ជំនួយបន្ថែម។';
+        var aiOpened = false;
+
+        function toggleAiChat() {
+            var win = document.getElementById('ai-chat-window');
+            win.classList.toggle('open');
+            if (win.classList.contains('open') && !aiOpened) {
+                aiOpened = true;
+                aiAddMessage('bot', 'សួស្តី! 👋 ខ្ញុំជា AI ជំនួយការរបស់ C2-EPE Digital Academy។ តើខ្ញុំអាចជួយអ្នកបានយ៉ាងណា?\n\nសាកល្បងសួរអំពី៖ ទំនាក់ទំនង, កម្មវិធីសិក្សា, ការចុះឈ្មោះ, តម្លៃ...');
+            }
+        }
+
+        function aiAddMessage(role, text) {
+            var container = document.getElementById('ai-chat-messages');
+            var bubble = document.createElement('div');
+            bubble.className = 'ai-msg ' + role;
+            bubble.textContent = text;
+            container.appendChild(bubble);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function aiFindResponse(text) {
+            var lower = text.toLowerCase();
+            for (var i = 0; i < aiKnowledgeBase.length; i++) {
+                var entry = aiKnowledgeBase[i];
+                for (var j = 0; j < entry.keywords.length; j++) {
+                    if (lower.indexOf(entry.keywords[j].toLowerCase()) !== -1) {
+                        return entry.response;
+                    }
+                }
+            }
+            return aiFallback;
+        }
+
+        function aiSend(text) {
+            if (!text || !text.trim()) return;
+            aiAddMessage('user', text);
+            var response = aiFindResponse(text);
+            setTimeout(function() { aiAddMessage('bot', response); }, 400);
+        }
+
+        function aiSendFromInput() {
+            var input = document.getElementById('ai-chat-input');
+            var text = input.value;
+            if (!text.trim()) return;
+            aiSend(text);
+            input.value = '';
+        }
     </script>
 </body>
 </html>
