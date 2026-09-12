@@ -1469,6 +1469,12 @@
 
         /* Modal Logic & File/Code Handling */
         function openSliderModal() {
+            var pwd = prompt('🔒 សូមបញ្ចូលពាក្យសម្ងាត់ Admin ដើម្បីកែប្រែ Gallery:');
+            if (pwd === null) { return; }
+            if (pwd !== 'C2EPE2025') {
+                alert('ពាក្យសម្ងាត់មិនត្រឹមត្រូវ! មានតែ Admin ឬ Owner ប៉ុណ្ណោះដែលអាចកែប្រែផ្នែកនេះបាន។');
+                return;
+            }
             document.getElementById('sliderModal').style.display = 'flex';
         }
 
